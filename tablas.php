@@ -1,49 +1,11 @@
 <?php require_once "vistas/parte_superior.php"
 
-
-
-
 ?>
 <!--INICIO del cont principal-->
 <div class="container">
     <h1>Tabla</h1>
 </div>
 
-
-<?php
-
-function getSslPage($url){
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_REFERER, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    return $result;
-}
-
-
-function mostrarDatos(){
-    $url = "https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=e4a9b05f-c480-45fb-a62c-6d4e39c5180e&limit=16";
-    
-    //$datos = file_get_contents($url);
-    $datos = getSslPage($url);
-
-    $datos = json_decode($datos);
-    
-    $rs = $datos->result->records;
-
-    foreach($rs as $caso){
-        echo "
-            <td>{$caso->nomgeo}</td>
-            ";
-    }
-}
-
-?>
 
     <div class="container">
         <div class="row">

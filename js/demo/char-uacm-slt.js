@@ -26,7 +26,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     }
     return s.join(dec);
 }
-var url = 'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=ff1d4cbf-5985-45db-b40f-d820ce2b01a2&q=iztapalapa';
+
+
+
+var url = 'https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=ff1d4cbf-5985-45db-b40f-d820ce2b01a2&q=san lorenzo';
 
 async function lista(url) {
     const response2 = await fetch(url);
@@ -39,28 +42,18 @@ async function lista(url) {
 
     //console.log(records.map(item => item.colonia))
 
-
     const datos1 = records.map(item => item.colonia);
     const datos2 = records.map(item => item.total);
-    // Ss Chart Example
-    var ctx = document.getElementById("mySsChart");
-    var myLineChart = new Chart(ctx, {
-        type: 'line',
+    var ctx = document.getElementById("myUACMChart");
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
         data: {
             labels: datos1,
             datasets: [{
-                label: "sars-cov-2",
-                lineTension: 0.3,
-                backgroundColor: "rgba(78, 115, 223, 0.05)",
-                borderColor: "rgba(78, 115, 223, 1)",
-                pointRadius: 3,
-                pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointBorderColor: "rgba(78, 115, 223, 1)",
-                pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                pointHitRadius: 10,
-                pointBorderWidth: 2,
+                label: "Covis-19",
+                backgroundColor: "#4e73df",
+                hoverBackgroundColor: "#2e59d9",
+                borderColor: "#4e73df",
                 data: datos2,
             }],
         },
@@ -77,18 +70,21 @@ async function lista(url) {
             scales: {
                 xAxes: [{
                     time: {
-                        unit: 'date'
+                        unit: 'month'
                     },
                     gridLines: {
                         display: false,
                         drawBorder: false
                     },
                     ticks: {
-                        maxTicksLimit: 7
-                    }
+                        maxTicksLimit: 6
+                    },
+                    maxBarThickness: 25,
                 }],
                 yAxes: [{
                     ticks: {
+                        min: 0,
+                        max: 30,
                         maxTicksLimit: 5,
                         padding: 10,
                         // Include a dollar sign in the ticks
@@ -109,18 +105,16 @@ async function lista(url) {
                 display: false
             },
             tooltips: {
-                backgroundColor: "rgb(255,255,255)",
-                bodyFontColor: "#858796",
                 titleMarginBottom: 10,
                 titleFontColor: '#6e707e',
                 titleFontSize: 14,
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
                 borderColor: '#dddfeb',
                 borderWidth: 1,
                 xPadding: 15,
                 yPadding: 15,
                 displayColors: false,
-                intersect: false,
-                mode: 'index',
                 caretPadding: 10,
                 callbacks: {
                     label: function(tooltipItem, chart) {
@@ -128,7 +122,7 @@ async function lista(url) {
                         return datasetLabel + ' positivos: ' + number_format(tooltipItem.yLabel);
                     }
                 }
-            }
+            },
         }
     });
 }
