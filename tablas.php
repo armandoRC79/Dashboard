@@ -27,7 +27,7 @@ function getSslPage($url){
 
 
 function mostrarDatos(){
-    $url = "https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=ff1d4cbf-5985-45db-b40f-d820ce2b01a2&limit=2";
+    $url = "https://datos.cdmx.gob.mx/api/3/action/datastore_search?resource_id=e4a9b05f-c480-45fb-a62c-6d4e39c5180e&limit=16";
     
     //$datos = file_get_contents($url);
     $datos = getSslPage($url);
@@ -37,24 +37,47 @@ function mostrarDatos(){
     $rs = $datos->result->records;
 
     foreach($rs as $caso){
-        echo "<tr>
-            <td>{$caso->_id}</td>
-            <td>{$caso->colonia}</td>
-            <td>{$caso->alcaldia}</td>
-            <td nowrap>{$caso->nueva_clave}</td>
-            <td>{$caso->total}</td>
-            <td>{$caso->cuartil}</td>
-            <td>{$caso->quintil}</td>
-            <td>{$caso->octil}</td>
-            <td>{$caso->decil}</td>
-            <!--td>{$caso->geo_shape}</td-->
-            <!--td>{$caso->geo_point}</td-->
-            </tr>";
+        echo "
+            <td>{$caso->nomgeo}</td>
+            ";
     }
 }
 
 ?>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <button id="btnNuevo" type="button" class="btn btn-success">Alcaldia</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal para CRUD -->
+<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="panel-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-disniss="modal" aria-label="close"><span aria-hidden="true">&times;
+                    </span>
+                    </button>
+                </div>
+                <form id="formPersonas">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre" class="col-form-label"></label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-disaiss="modal">Cancelar</button>
+                        <button type="submit" id="btnBuscar" class="btn btn-dark">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Tabla con dataTable -->
@@ -74,14 +97,9 @@ function mostrarDatos(){
                                 <th>Quintil</th>
                                 <th>Octil</th>
                                 <th>Decil</th>
-                                <th>Geo Shape</th>
-                                <th>Geo Point</th>
                             </tr>
                         </thead>
-                        <tbody>
-                           <?php
-                               mostrarDatos();
-                           ?>
+                        <tbody id="res">
                         </tbody>
                     </table>
                 </div>
@@ -89,6 +107,8 @@ function mostrarDatos(){
         </div>
     </div>
 
+
 <?php require_once "vistas/parte_inferior.php"?>
+
 
            

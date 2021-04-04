@@ -45,25 +45,25 @@
         </div>
     </div>
 
+    <!-- jQuery, popprt, js, bootstrap -->
+
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
 
     <!-- datatables JS -->
-    <script type="text/javascript" src="vendor/datatables/datatables.min.js"></script>
+    <script src="vendor/datatables/datatables.min.js" type="text/javascript"></script>
 
     <!-- código propio JS -->
-    <script type="text/javascript" src="main.js"></script>
+    <script src="main.js" type="text/javascript"></script>
 
     <script src="vendor/chart.js/Chart.min.js"></script>
     
     <!-- Page level custom scripts -->
+    <script src="js/demo/char-ss.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
