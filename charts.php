@@ -51,7 +51,8 @@
                                         <canvas id="myMapChart"></canvas>
                                     </div>
                                     <hr>
-                                    <p>Fuente: Portal de datos de la Ciudad de México</p>                                  
+                                    <p>Fuente: Portal de datos de la Ciudad de México</p>
+                                    <p>Nivel de contagiados: 4%</p>                                   
                                 </div>
                             </div>
 
@@ -66,6 +67,7 @@
                                     </div>
                                     <hr>
                                     <p>Fuente: Portal de datos de la Ciudad de México</p> 
+                                    <p>Total de infectados en zonas aledañas a la UACM: 44 total</p>  
                                 </div>
                             </div>
 
@@ -81,6 +83,7 @@
                                     <hr>
                                     <p>Colonias aledañas a la UACM</p>
                                     <p>Fuente: Portal de datos de la Ciudad de México</p>
+                                    <p>Porcentaje de positivos con respecto a Iztapalapa: .064 % </p>
                                 </div>
                             </div>
 
